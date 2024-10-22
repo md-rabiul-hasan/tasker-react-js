@@ -5,6 +5,15 @@ import TaskList from './Tasker/TaskList'
 import TaskModal from './Tasker/TaskModal'
 
 export default function TaskBoard() {
+	const initialTask = {
+		id: 1,
+		title: 'First Task',
+        description: 'This is a sample task.',
+        tags: ['task', 'workflow'],
+		priority: "High",
+		favourite: false
+	}
+	const [tasks, setTasks] = useState([initialTask]);
 	const [showModal, setShowModal] = useState(false);
   return (
     <section className="mb-20" id="tasks">
@@ -18,7 +27,7 @@ export default function TaskBoard() {
 					<TaskAction />
 				</div>
 				<div className="overflow-auto">
-					<TaskList />
+					<TaskList tasks={tasks} />
 				</div>
 			</div>
 		</div>
